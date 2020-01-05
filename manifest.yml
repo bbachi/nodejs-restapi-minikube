@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nodeapi
+  name: nodeapi
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nodeapi
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodeapi
+    spec:
+      containers:
+      - image: node-api
+        name: node-api
+        imagePullPolicy: Never
+        resources: {}
+        ports:
+          - containerPort: 3000 
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeapi
+  labels:
+    run: nodeapi
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: nodeapi
+  type: NodePort

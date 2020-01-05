@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-api-pod
+spec:
+  containers:
+    - image: bbachin1/node-api
+      name: node-api
+      imagePullPolicy: Always
+      resources: {}
+      ports:
+        - containerPort: 3000
+  imagePullSecrets:
+    - name: regcred
