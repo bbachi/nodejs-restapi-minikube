@@ -4,11 +4,9 @@ metadata:
   name: node-api-pod
 spec:
   containers:
-    - image: bbachin1/node-api
+    - image: node-api
       name: node-api
-      imagePullPolicy: Always
+      imagePullPolicy: Never
       resources: {}
       ports:
         - containerPort: 3000
-  imagePullSecrets:
-    - name: regcred
